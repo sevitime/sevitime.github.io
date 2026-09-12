@@ -32,6 +32,12 @@
   }
 
   var abrir = document.getElementById('abrir');
+  var nota = document.getElementById('nota');
+  function ocultarAbrir() {
+    abrir.hidden = true;
+    // La nota habla del botón: sin botón, sobra.
+    if (nota) nota.hidden = true;
+  }
   var nombre = (params.get('n') || '').trim();
 
   if (tipo === 'perfil' && nombre) {
@@ -47,11 +53,11 @@
   } else {
     // Un enlace roto o recortado por el camino: no se ofrece abrir algo que
     // no se sabe qué es, solo la app.
-    abrir.hidden = true;
+    ocultarAbrir();
     poner('titulo', 'Enlace incompleto');
     poner('explicacion', 'A este enlace le falta un trozo. Pídele a quien te lo mandó que lo vuelva a compartir.');
   }
 
   // Fuera de Android el intent no sirve de nada.
-  if (!/android/i.test(navigator.userAgent)) abrir.hidden = true;
+  if (!/android/i.test(navigator.userAgent)) ocultarAbrir();
 })();
