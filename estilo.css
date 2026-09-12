@@ -2,6 +2,10 @@
    la app, que es su identidad en claro y en oscuro. */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Sin esto, el display:block de .boton pisa el atributo hidden y el botón
+   «Abrir en la app» sale también fuera de Android o con un enlace roto. */
+[hidden] { display: none !important; }
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: #0f0f13;
