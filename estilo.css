@@ -60,3 +60,80 @@ p { font-size: 15px; color: #bbb; margin-bottom: 12px; }
 
 footer { text-align: center; padding: 20px; font-size: 13px; color: #666; }
 footer a { color: #00BFA5; }
+
+/* ---------- datos reales (perfil / ruta) ---------- */
+
+#datos { text-align: left; }
+#datos:empty { display: none; }
+
+/* cuando hay datos, el título genérico y su explicación sobran */
+#datos:not(:empty) + h1,
+#datos:not(:empty) + h1 + p { display: none; }
+
+.avatar {
+  width: 84px; height: 84px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px; flex: 0 0 auto; overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+.avatar.foto img { width: 100%; height: 100%; object-fit: cover; }
+.avatar.iniciales { background: #26302e; color: #00BFA5; font-weight: 700; }
+
+.perfil-cabecera { display: flex; align-items: center; gap: 16px; margin: 18px 0 20px; }
+.perfil-nombre { font-size: 24px; font-weight: 700; color: #fff; margin: 0 0 4px; overflow-wrap: anywhere; }
+.perfil-titulo { font-size: 14px; color: #00BFA5; }
+
+.stats { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+.stat {
+  flex: 1 1 auto; min-width: 76px;
+  background: #16161c; border: 1px solid #26262f; border-radius: 12px;
+  padding: 10px 12px; text-align: center;
+}
+.stat-valor { font-size: 18px; font-weight: 700; color: #fff; }
+.stat-etiqueta { font-size: 11px; color: #888; margin-top: 2px; }
+
+.bio { font-size: 15px; color: #bbb; margin: 0 0 18px; line-height: 1.55; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.chip {
+  font-size: 12.5px; color: #00BFA5;
+  border: 1px solid #1e3a35; background: #12211e;
+  border-radius: 999px; padding: 4px 12px;
+}
+
+.seccion-titulo {
+  font-size: 12px; font-weight: 700; color: #888;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 26px 0 12px;
+}
+
+.rutas { display: flex; flex-direction: column; gap: 10px; }
+.ruta {
+  display: flex; align-items: center; gap: 14px;
+  background: #16161c; border: 1px solid #26262f; border-radius: 14px;
+  padding: 14px 16px; text-decoration: none;
+}
+.ruta:hover { border-color: #2e5a52; }
+.ruta-icono { font-size: 24px; flex: 0 0 auto; }
+.ruta-cuerpo { min-width: 0; }
+.ruta-nombre { font-size: 15px; font-weight: 600; color: #fff; }
+.ruta-meta { font-size: 13px; color: #888; margin-top: 2px; }
+
+.ruta-cabecera { display: flex; align-items: center; gap: 16px; margin: 18px 0 20px; }
+.ruta-icono-grande { font-size: 40px; flex: 0 0 auto; }
+.ruta-titulo { font-size: 24px; font-weight: 700; color: #fff; margin: 0 0 4px; overflow-wrap: anywhere; }
+.ruta-sub { font-size: 14px; color: #00BFA5; }
+.ruta-descripcion { font-size: 15px; color: #bbb; margin: 0 0 6px; line-height: 1.55; }
+
+.paradas { list-style: none; counter-reset: parada; margin: 0; }
+.parada {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid #1e1e24;
+}
+.parada:last-child { border-bottom: none; }
+.parada-numero {
+  flex: 0 0 28px; height: 28px; border-radius: 50%;
+  background: #00897B; color: #fff; font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.parada-nombre { font-size: 15px; color: #ddd; }
