@@ -1,5 +1,7 @@
-/* Mismo aire que la política de privacidad: fondo oscuro y el verde agua de
-   la app, que es su identidad en claro y en oscuro. */
+/* Páginas de enlace compartido (perfil y ruta). Misma identidad que la app:
+   verde agua + dorado, negros con matiz verde en oscuro y casi blanco con
+   matiz verde en claro. El tema sigue la preferencia del sistema; no hay
+   interruptor (el sistema ya lo expresa). */
 
 /* Inter, la tipografía de la app, autohospedada (sin Google Fonts). */
 @font-face {
@@ -11,16 +13,42 @@
 }
 
 :root {
-  /* Misma escala que la app (lib/theme/app_colors.dart). */
+  /* Oscuro (por defecto): la escala de la app (lib/theme/app_colors.dart). */
+  color-scheme: dark;
   --verde: #00897B;
   --verde-claro: #26A69A;
   --dorado: #FCC440;
+  --dorado-texto: #FCC440;
   --fondo: #0F1C1A;
   --superficie: #1A2B29;
   --borde: #243533;
   --texto: #E8F0EF;
   --apagado: #8AADAA;
   --tenue: #6E9591;
+  --avatar-bg: #223634;
+  --sombra: rgba(0, 0, 0, 0.4);
+  --parada-borde: #1e1e24;
+  --hover-borde: #2e5a52;
+}
+
+/* Claro: la escala clara de la app. El verde de acento baja a #00897B
+   porque el teal claro sobre blanco no llega a contraste de texto. */
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --verde-claro: #00897B;
+    --dorado-texto: #926702;
+    --fondo: #F2F7F6;
+    --superficie: #FFFFFF;
+    --borde: #E4EDEC;
+    --texto: #1A2E2B;
+    --apagado: #4A6360;
+    --tenue: #7A938F;
+    --avatar-bg: #E0F2F1;
+    --sombra: rgba(15, 40, 35, 0.12);
+    --parada-borde: #E4EDEC;
+    --hover-borde: #B2DFDB;
+  }
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,7 +68,7 @@ body {
 }
 
 header {
-  background: #00897B;
+  background: var(--verde);
   padding: 36px 24px 28px;
   text-align: center;
 }
@@ -62,9 +90,9 @@ main {
   text-align: center;
 }
 
-.tipo { font-size: 13px; color: #26A69A; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
-h1 { font-size: 26px; font-weight: 700; color: #fff; margin: 6px 0 14px; overflow-wrap: anywhere; }
-p { font-size: 15px; color: #8AADAA; margin-bottom: 12px; }
+.tipo { font-size: 13px; color: var(--verde-claro); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+h1 { font-size: 26px; font-weight: 700; color: var(--texto); margin: 6px 0 14px; overflow-wrap: anywhere; }
+p { font-size: 15px; color: var(--apagado); margin-bottom: 12px; }
 
 .botones { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
 .boton {
@@ -75,14 +103,14 @@ p { font-size: 15px; color: #8AADAA; margin-bottom: 12px; }
   font-weight: 600;
   text-decoration: none;
 }
-.boton.principal { background: #00897B; color: #fff; }
-.boton.secundario { border: 1px solid #243533; color: #26A69A; }
-.boton:focus-visible { outline: 3px solid #26A69A; outline-offset: 3px; }
+.boton.principal { background: var(--verde); color: #fff; }
+.boton.secundario { border: 1px solid var(--borde); color: var(--verde-claro); }
+.boton:focus-visible { outline: 3px solid var(--verde-claro); outline-offset: 3px; }
 
-.nota { font-size: 13px; color: #6E9591; margin-top: 22px; }
+.nota { font-size: 13px; color: var(--tenue); margin-top: 22px; }
 
-footer { text-align: center; padding: 20px; font-size: 13px; color: #6E9591; }
-footer a { color: #26A69A; }
+footer { text-align: center; padding: 20px; font-size: 13px; color: var(--tenue); }
+footer a { color: var(--verde-claro); }
 
 /* ---------- datos reales (perfil / ruta) ---------- */
 
@@ -97,36 +125,36 @@ footer a { color: #26A69A; }
   width: 84px; height: 84px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-size: 30px; flex: 0 0 auto; overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  box-shadow: 0 6px 18px var(--sombra);
 }
 .avatar.foto img { width: 100%; height: 100%; object-fit: cover; }
-.avatar.iniciales { background: #223634; color: #26A69A; font-weight: 700; }
+.avatar.iniciales { background: var(--avatar-bg); color: var(--verde-claro); font-weight: 700; }
 
 .perfil-cabecera { display: flex; align-items: center; gap: 16px; margin: 18px 0 20px; }
-.perfil-nombre { font-size: 24px; font-weight: 700; color: #fff; margin: 0 0 4px; overflow-wrap: anywhere; }
-.perfil-titulo { font-size: 14px; color: #26A69A; }
+.perfil-nombre { font-size: 24px; font-weight: 700; color: var(--texto); margin: 0 0 4px; overflow-wrap: anywhere; }
+.perfil-titulo { font-size: 14px; color: var(--verde-claro); }
 
 .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
 .stat {
   flex: 1 1 auto; min-width: 76px;
-  background: #1A2B29; border: 1px solid #243533; border-radius: 12px;
+  background: var(--superficie); border: 1px solid var(--borde); border-radius: 12px;
   padding: 10px 12px; text-align: center;
 }
-.stat-valor { font-size: 18px; font-weight: 700; color: #fff; }
-.stat-valor.dorado { color: var(--dorado); }
-.stat-etiqueta { font-size: 11px; color: #6E9591; margin-top: 2px; }
+.stat-valor { font-size: 18px; font-weight: 700; color: var(--texto); }
+.stat-valor.dorado { color: var(--dorado-texto); }
+.stat-etiqueta { font-size: 11px; color: var(--tenue); margin-top: 2px; }
 
-.bio { font-size: 15px; color: #8AADAA; margin: 0 0 18px; line-height: 1.55; }
+.bio { font-size: 15px; color: var(--apagado); margin: 0 0 18px; line-height: 1.55; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
 .chip {
-  font-size: 12.5px; color: #26A69A;
-  border: 1px solid #243533; background: #1A2B29;
+  font-size: 12.5px; color: var(--verde-claro);
+  border: 1px solid var(--borde); background: var(--superficie);
   border-radius: 999px; padding: 4px 12px;
 }
 
 .seccion-titulo {
-  font-size: 12px; font-weight: 700; color: #6E9591;
+  font-size: 12px; font-weight: 700; color: var(--tenue);
   text-transform: uppercase; letter-spacing: 0.08em;
   margin: 26px 0 12px;
 }
@@ -134,30 +162,30 @@ footer a { color: #26A69A; }
 .rutas { display: flex; flex-direction: column; gap: 10px; }
 .ruta {
   display: flex; align-items: center; gap: 14px;
-  background: #1A2B29; border: 1px solid #243533; border-radius: 14px;
+  background: var(--superficie); border: 1px solid var(--borde); border-radius: 14px;
   padding: 14px 16px; text-decoration: none;
 }
-.ruta:hover { border-color: #2e5a52; }
+.ruta:hover { border-color: var(--hover-borde); }
 .ruta-icono { font-size: 24px; flex: 0 0 auto; }
 .ruta-cuerpo { min-width: 0; }
-.ruta-nombre { font-size: 15px; font-weight: 600; color: #fff; }
-.ruta-meta { font-size: 13px; color: #6E9591; margin-top: 2px; }
+.ruta-nombre { font-size: 15px; font-weight: 600; color: var(--texto); }
+.ruta-meta { font-size: 13px; color: var(--tenue); margin-top: 2px; }
 
 .ruta-cabecera { display: flex; align-items: center; gap: 16px; margin: 18px 0 20px; }
 .ruta-icono-grande { font-size: 40px; flex: 0 0 auto; }
-.ruta-titulo { font-size: 24px; font-weight: 700; color: #fff; margin: 0 0 4px; overflow-wrap: anywhere; }
-.ruta-sub { font-size: 14px; color: #26A69A; }
-.ruta-descripcion { font-size: 15px; color: #8AADAA; margin: 0 0 6px; line-height: 1.55; }
+.ruta-titulo { font-size: 24px; font-weight: 700; color: var(--texto); margin: 0 0 4px; overflow-wrap: anywhere; }
+.ruta-sub { font-size: 14px; color: var(--verde-claro); }
+.ruta-descripcion { font-size: 15px; color: var(--apagado); margin: 0 0 6px; line-height: 1.55; }
 
 .paradas { list-style: none; counter-reset: parada; margin: 0; }
 .parada {
   display: flex; align-items: center; gap: 12px;
-  padding: 12px 0; border-bottom: 1px solid #1e1e24;
+  padding: 12px 0; border-bottom: 1px solid var(--parada-borde);
 }
 .parada:last-child { border-bottom: none; }
 .parada-numero {
   flex: 0 0 28px; height: 28px; border-radius: 50%;
-  background: #00897B; color: #fff; font-size: 13px; font-weight: 700;
+  background: var(--verde); color: #fff; font-size: 13px; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
 }
-.parada-nombre { font-size: 15px; color: #ddd; }
+.parada-nombre { font-size: 15px; color: var(--texto); }
