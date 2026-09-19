@@ -177,7 +177,7 @@
     datos.appendChild(cab);
 
     var stats = el('div', 'stats');
-    stats.appendChild(stat(numero(p.xp), 'XP'));
+    stats.appendChild(stat(numero(p.xp), 'XP', true));
     stats.appendChild(stat('#' + p.posicion, 'en el ranking'));
     if (p.desde) stats.appendChild(stat(mesDesde(p.desde), ''));
     if (p.seguidores != null) stats.appendChild(stat(numero(p.seguidores), 'seguidores'));
@@ -227,9 +227,9 @@
     }
   }
 
-  function stat(valor, etiqueta) {
+  function stat(valor, etiqueta, dorado) {
     var s = el('div', 'stat');
-    var v = el('div', 'stat-valor');
+    var v = el('div', 'stat-valor' + (dorado ? ' dorado' : ''));
     v.textContent = valor;
     s.appendChild(v);
     if (etiqueta) {
